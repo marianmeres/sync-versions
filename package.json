@@ -1,0 +1,64 @@
+{
+  "name": "@marianmeres/sync-versions",
+  "version": "0.0.0",
+  "description": "Carry a pnpm workspace's root version into every member manifest, VERSION constant and the changelog — the before-commit step of a one-version release.",
+  "license": "MIT",
+  "author": "Marian Meres",
+  "type": "module",
+  "packageManager": "pnpm@12.16.1",
+  "engines": {
+    "node": ">=24.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "sync-versions": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/sync-versions.d.ts",
+      "default": "./dist/sync-versions.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianmeres/sync-versions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marianmeres/sync-versions/issues"
+  },
+  "homepage": "https://github.com/marianmeres/sync-versions#readme",
+  "keywords": [
+    "version",
+    "monorepo",
+    "workspace",
+    "pnpm",
+    "changelog",
+    "release",
+    "cli"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "node --test \"tests/**/*.test.ts\"",
+    "test:watch": "node --test --watch \"tests/**/*.test.ts\"",
+    "ci": "pnpm run typecheck && pnpm run lint && pnpm test",
+    "prepublishOnly": "pnpm run ci && pnpm run build",
+    "version:check": "node src/bin.ts --check",
+    "release": "node src/bin.ts --preflight && pnpm run ci && npx --yes @marianmeres/release@^2.2.0 --before-commit \"node src/bin.ts\"",
+    "rp": "pnpm run release -y --no-push && pnpm publish && git push --follow-tags",
+    "rpm": "pnpm run release minor -y --no-push && pnpm publish && git push --follow-tags"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.3",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
