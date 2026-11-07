@@ -1,6 +1,6 @@
 {
   "name": "@marianmeres/sync-versions",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Carry a pnpm workspace's root version into every member manifest, VERSION constant and the changelog — the before-commit step of a one-version release.",
   "license": "MIT",
   "author": "Marian Meres",

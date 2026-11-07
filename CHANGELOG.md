@@ -3,7 +3,7 @@
 The version is `package.json`'s. This tool stamps the heading below when it releases itself
 (`pnpm run release` runs `node src/bin.ts` as its `--before-commit` step).
 
-## Unreleased
+## 0.1.0 — 2026-11-07
 
 **First release.** This replaces the `scripts/sync-versions.ts` that `joy-next`, `stack` and
 `collection-next` each kept their own copy of.
