@@ -57,8 +57,8 @@
     "rpm": "npm whoami >/dev/null && pnpm run release minor -y --before-push \"pnpm publish\""
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.6.3",
-    "@types/node": "^26.6.5",
+    "@biomejs/biome": "^2.6.6",
+    "@types/node": "^26.6.6",
     "typescript": "^7.0.2"
   }
 }
