@@ -45,8 +45,9 @@ dist/                   `tsc -p tsconfig.build.json` output; gitignored; all npm
    Erasable TS: no `enum`, `namespace`, constructor parameter properties; `import type`;
    explicit `.ts` import extensions. `pnpm run typecheck` is the only type gate.
 7. **Formatting**: tabs, 4 wide, 90 columns (`biome.json`). `pnpm run format` before committing.
-8. **Releasing is a human action**: `pnpm run rp` / `rpm` (preflight → ci → bump + this tool
-   from source → commit + tag → `pnpm publish` → push). Public npm: irreversible.
+8. **Releasing is a human action**: `pnpm run rp` / `rpm` (`npm whoami` → the release tool's
+   own checks → its `--before-bump`: preflight + ci → bump + this tool from source →
+   commit + tag → its `--before-push`: `pnpm publish` → push). Public npm: irreversible.
 
 ## Before Making Changes
 

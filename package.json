@@ -52,9 +52,9 @@
     "ci": "pnpm run typecheck && pnpm run lint && pnpm test",
     "prepublishOnly": "pnpm run ci && pnpm run build",
     "version:check": "node src/bin.ts --check",
-    "release": "node src/bin.ts --preflight && pnpm run ci && npx --yes @marianmeres/release@^2.2.0 --before-commit \"node src/bin.ts\"",
-    "rp": "pnpm run release -y --no-push && pnpm publish && git push --follow-tags",
-    "rpm": "pnpm run release minor -y --no-push && pnpm publish && git push --follow-tags"
+    "release": "npx --yes @marianmeres/release@^2.3.0 --before-bump \"node src/bin.ts --preflight && pnpm run ci\" --before-commit \"node src/bin.ts\"",
+    "rp": "npm whoami >/dev/null && pnpm run release -y --before-push \"pnpm publish\"",
+    "rpm": "npm whoami >/dev/null && pnpm run release minor -y --before-push \"pnpm publish\""
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.3",
